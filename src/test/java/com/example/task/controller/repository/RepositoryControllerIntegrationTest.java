@@ -53,7 +53,7 @@ class RepositoryControllerIntegrationTest {
 
     @Test
     void shouldReturnNotFoundForInvalidUsername() {
-        prepareStubFor("/repos/octocat/Hello-World/commits/master", 404, null);
+        prepareStubFor("/users/asdasd/repos", 404, null);
 
         webTestClient.get().uri("/users/{username}/repositories", "asdasd")
                 .accept(MediaType.APPLICATION_JSON)

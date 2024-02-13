@@ -22,6 +22,20 @@ You can run this project in several ways:
 2. Locate the `TaskApplication.java` file that contains the `main` method.
 3. Run the application using the IDE's built-in tools.
 
+### Using Docker
+
+1. Package the application with Maven:
+   1. Ensure you are in the project root directory and run:
+   2. mvn clean package
+2. Build the Docker image:
+   1. After packaging, build the Docker image with:
+   2. ``docker build -t git-repo-fetcher .``
+3. Run the application in a Docker container:
+   1. Start the container using:
+   2. ``docker run -p 8080:8080 git-repo-fetcher``
+4. The application will be accessible at http://localhost:8080 and the Swagger UI can be accessed at http://localhost:8080/swagger-ui.html.
+
+
 ### Using Maven Wrapper
 
 For Unix/Linux systems:
@@ -48,3 +62,15 @@ mvnw test
 
 This command will run all unit and integration tests in the project and provide a summary of the test results.
 
+## API Documentation
+
+The OpenAPI documentation for this project is available in the `api-docs.yaml` file located at:
+
+```
+docs/api-docs.yaml
+```
+Additionally, you can view and interact with the API's endpoints through the Swagger UI, which is accessible at:
+
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+This web interface provides a detailed look at all available RESTful endpoints, allowing you to test them directly from your browser. It's an invaluable tool for both development and testing phases.

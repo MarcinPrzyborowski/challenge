@@ -1,0 +1,56 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /users/{username}/repositories:
+    get:
+      tags:
+      - repository-controller
+      summary: Get user repositories
+      operationId: getRepositoriesByUsername
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RepositoryResponse'
+components:
+  schemas:
+    Branch:
+      type: object
+      properties:
+        name:
+          type: string
+        lastCommitSha:
+          type: string
+    Owner:
+      type: object
+      properties:
+        login:
+          type: string
+    RepositoryResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        branches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Branch'
+        owner:
+          $ref: '#/components/schemas/Owner'
+        fork:
+          type: boolean
